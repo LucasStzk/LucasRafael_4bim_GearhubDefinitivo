@@ -1,0 +1,34 @@
+=====================================================================
+  IMAGENS DO SITE (banners, promoções, mascote e logo)
+=====================================================================
+
+Para trocar uma imagem do site basta SALVAR O ARQUIVO nesta pasta, com o
+nome EXATO da tabela abaixo (sem mexer em nenhum HTML). Depois atualize a
+página com Ctrl + F5.
+
+Enquanto o arquivo não existir, o site mostra um quadro amarelo com o aviso
+"TROQUE AQUI" e o nome do arquivo esperado.
+
+ARQUIVO               ONDE APARECE                                  TAMANHO SUGERIDO
+--------------------  --------------------------------------------  -------------------------
+logo.png              Cabeçalho (substitui o texto "Gearhub")       altura 84 px, fundo transparente
+banner-1.jpg          Carrossel da página inicial (slide 1)         1200 x 420 px
+banner-2.jpg          Carrossel da página inicial (slide 2)         1200 x 420 px
+banner-3.jpg          Carrossel da página inicial (slide 3)         1200 x 420 px
+promo-1.jpg           Promoções especiais (inicial) - cartão 1      400 x 220 px
+promo-2.jpg           Promoções especiais (inicial) - cartão 2      400 x 220 px
+promo-3.jpg           Promoções especiais (inicial) - cartão 3      400 x 220 px
+faixa-promo.jpg       Faixa larga de promoção (inicial)             1200 x 140 px
+banner-produtos.jpg   Topo da página de produtos                    1200 x 140 px
+mascote.png           Mascote na página inicial                     500 x 625 px, PNG transparente
+mascote-login.png     Mascote no login, cadastro e recuperar senha  400 x 500 px, PNG transparente
+mascote-vazio.png     Mascote com carrinho vazio / sem pedidos      400 x 400 px, PNG transparente
+
+Observações
+- Pode usar .jpg ou .png, mas o NOME e a EXTENSÃO precisam ser exatamente os
+  da tabela. Se quiser outra extensão (ex.: .webp), troque o nome no
+  atributo data-img do HTML correspondente (procure por "TROQUE A IMAGEM").
+- As fotos dos produtos NÃO ficam aqui: elas são enviadas pelo painel do
+  funcionário (Periféricos) e ficam na pasta imagens/ com o número do produto.
+- Para mudar o link de cada promoção, edite o href do <a class="promo-card">
+  em frontend/inicio/inicio.html.

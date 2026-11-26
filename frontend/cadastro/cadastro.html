@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se - Gearhub</title>
+    <!-- Fontes do Google Fonts: Sora (títulos) e Inter (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/estilo.css">
+</head>
+
+<body>
+    <div class="barra-topo">
+        <div class="wrap">
+            <span>Pague com <strong>PIX</strong> usando QR Code</span>
+            <span>Devolva <strong>só o item</strong> que precisar</span>
+        </div>
+    </div>
+
+    <header class="topo">
+        <div class="wrap topo-linha">
+            <a class="logo" href="/frontend/inicio/inicio.html" aria-label="Gearhub - página inicial">
+                <!-- ============ LOGO ============
+                     Para usar uma imagem no lugar do texto, salve-a em  imagens/site/logo.png  (altura sugerida: 84 px, fundo transparente).
+                     Sem o arquivo, aparece o texto "Gearhub". -->
+                <img class="logo-img" src="/imagens/site/logo.png" alt="Gearhub" style="display:none"
+                     onload="this.style.display='inline'; this.nextElementSibling.style.display='none'" onerror="this.remove()">
+                <span class="logo-texto">Gear<span>hub</span></span>
+            </a>
+            <form class="busca-topo" role="search" onsubmit="buscarTopo(event)">
+                <input type="search" id="campoBuscaTopo" placeholder="Busque por teclado, mouse, headset..." aria-label="Buscar produtos">
+                <button type="submit" aria-label="Buscar">🔍</button>
+            </form>
+            <div class="topo-direita">
+                <span id="areaUsuario"><a href="/frontend/login/login.html">Entre</a> ou <a href="/frontend/cadastro/cadastro.html">cadastre-se</a></span>
+                <a class="carrinho-link" href="/frontend/carrinho/carrinho.html" title="Carrinho">🛒<span id="qtdCarrinho" class="badge-carrinho">0</span></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="menu-principal" aria-label="Menu principal">
+        <a href="/frontend/inicio/inicio.html">🏠 Início</a>
+        <a href="/frontend/produtos/produtos.html">🛍️ Produtos</a>
+        <a href="/frontend/meus_pedidos/meus_pedidos.html">📦 Meus pedidos</a>
+        <a href="/frontend/carrinho/carrinho.html">🛒 Carrinho</a>
+    </nav>
+    <nav class="departamentos" id="departamentos" aria-label="Departamentos"></nav>
+
+    <main class="container-master">
+        <div class="pagina-form">
+            <section class="cartao-form">
+                <div class="cartao-topo">
+                    <h2>Crie sua conta</h2>
+                    <!-- Botão do Google (só o "G", como no wireframe). Aparece quando GOOGLE_CLIENT_ID está no .env -->
+                    <div id="botaoGoogle" class="botao-google-topo-area"></div>
+                </div>
+                <form onsubmit="cadastrar(event)">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Seu nome completo" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+
+                    <label for="senha">Senha (mínimo 6 caracteres)</label>
+                    <input type="password" id="senha" required>
+
+                    <label for="confirmarSenha">Confirmar senha</label>
+                    <input type="password" id="confirmarSenha" required>
+
+                    <button type="submit" class="botao botao-largo">Cadastrar</button>
+                </form>
+                <div id="msg" class="msg"></div>
+                <p class="rodape-form">Já tem conta? <a href="/frontend/login/login.html">Entre</a></p>
+            </section>
+
+            <aside class="lateral-mascote">
+                <!-- ===== MASCOTE (login, cadastro e recuperação de senha): imagens/site/mascote-login.png (400 × 500 px, PNG transparente) ===== -->
+                <div class="slot-imagem slot-mascote" data-img="mascote-login.png" data-nome="Mascote - telas de login" data-tam="400 × 500 px (PNG transparente)"></div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <footer class="rodape">
+        <div class="wrap rodape-topo">
+            <div class="rodape-marca">
+                <span class="logo"><span class="logo-texto">Gear<span>hub</span></span></span>
+                <p>Loja de Periféricos</p>
+            </div>
+            <div class="rodape-links">
+                <a href="/frontend/inicio/inicio.html">Início</a>
+                <a href="/frontend/produtos/produtos.html">Produtos</a>
+                <a href="/frontend/meus_pedidos/meus_pedidos.html">Meus pedidos</a>
+                <a href="/frontend/carrinho/carrinho.html">Carrinho</a>
+            </div>
+        </div>
+        <div class="rodape-base">
+            <p>&copy; 2026 Gearhub - Loja de Periféricos</p>
+            <p>Lucas Rafael (Bigas) - Turma M32 - 2026</p>
+        </div>
+    </footer>
+
+    <script src="/frontend/js/comum.js"></script>
+    <script src="./cadastro.js"></script>
+</body>
+
+</html>

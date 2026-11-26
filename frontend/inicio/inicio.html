@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início - Gearhub</title>
+    <!-- Fontes do Google Fonts: Sora (títulos) e Inter (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/estilo.css">
+</head>
+
+<body>
+    <div class="barra-topo">
+        <div class="wrap">
+            <span>Pague com <strong>PIX</strong> usando QR Code</span>
+            <span>Devolva <strong>só o item</strong> que precisar</span>
+        </div>
+    </div>
+
+    <header class="topo">
+        <div class="wrap topo-linha">
+            <a class="logo" href="/frontend/inicio/inicio.html" aria-label="Gearhub - página inicial">
+                <!-- ============ LOGO ============
+                     Para usar uma imagem no lugar do texto, salve-a em  imagens/site/logo.png  (altura sugerida: 84 px, fundo transparente).
+                     Sem o arquivo, aparece o texto "Gearhub". -->
+                <img class="logo-img" src="/imagens/site/logo.png" alt="Gearhub" style="display:none"
+                     onload="this.style.display='inline'; this.nextElementSibling.style.display='none'" onerror="this.remove()">
+                <span class="logo-texto">Gear<span>hub</span></span>
+            </a>
+            <form class="busca-topo" role="search" onsubmit="buscarTopo(event)">
+                <input type="search" id="campoBuscaTopo" placeholder="Busque por teclado, mouse, headset..." aria-label="Buscar produtos">
+                <button type="submit" aria-label="Buscar">🔍</button>
+            </form>
+            <div class="topo-direita">
+                <span id="areaUsuario"><a href="/frontend/login/login.html">Entre</a> ou <a href="/frontend/cadastro/cadastro.html">cadastre-se</a></span>
+                <a class="carrinho-link" href="/frontend/carrinho/carrinho.html" title="Carrinho">🛒<span id="qtdCarrinho" class="badge-carrinho">0</span></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="menu-principal" aria-label="Menu principal">
+        <a href="/frontend/inicio/inicio.html" class="ativo">🏠 Início</a>
+        <a href="/frontend/produtos/produtos.html">🛍️ Produtos</a>
+        <a href="/frontend/meus_pedidos/meus_pedidos.html">📦 Meus pedidos</a>
+        <a href="/frontend/carrinho/carrinho.html">🛒 Carrinho</a>
+    </nav>
+    <nav class="departamentos" id="departamentos" aria-label="Departamentos"></nav>
+
+    <main class="container-master">
+        <!-- ============ BANNERS PRINCIPAIS (carrossel que troca sozinho) ============ -->
+        <section class="hero" aria-label="Promoções em destaque">
+            <div class="hero-slides">
+                <div class="hero-slide ativo">
+                    <!-- ===== TROQUE A IMAGEM: banner principal 1 (carrossel) =====
+                         Salve em  imagens/site/banner-1.jpg  (1200 × 420 px). -->
+                    <div class="slot-imagem slot-hero" data-img="banner-1.jpg" data-nome="Banner principal 1" data-tam="1200 × 420 px"></div>
+                </div>
+                <div class="hero-slide">
+                    <!-- ===== TROQUE A IMAGEM: banner principal 2 (carrossel) =====
+                         Salve em  imagens/site/banner-2.jpg  (1200 × 420 px). -->
+                    <div class="slot-imagem slot-hero" data-img="banner-2.jpg" data-nome="Banner principal 2" data-tam="1200 × 420 px"></div>
+                </div>
+                <div class="hero-slide">
+                    <!-- ===== TROQUE A IMAGEM: banner principal 3 (carrossel) =====
+                         Salve em  imagens/site/banner-3.jpg  (1200 × 420 px). -->
+                    <div class="slot-imagem slot-hero" data-img="banner-3.jpg" data-nome="Banner principal 3" data-tam="1200 × 420 px"></div>
+                </div>
+            </div>
+            <button type="button" class="hero-seta hero-anterior" onclick="moverHero(-1)" aria-label="Banner anterior">‹</button>
+            <button type="button" class="hero-seta hero-proximo" onclick="moverHero(1)" aria-label="Próximo banner">›</button>
+            <div class="hero-pontos" id="heroPontos"></div>
+        </section>
+
+        <section>
+            <h2 class="secao-titulo">Categorias</h2>
+            <div class="categorias-circulos" id="categorias"></div>
+        </section>
+
+        <!-- ============ PROMOÇÕES ESPECIAIS (3 banners) ============ -->
+        <section>
+            <h2 class="secao-titulo">Promoções especiais</h2>
+            <div class="promos-grade">
+            <!-- ===== TROQUE A IMAGEM: promoção especial 1 =====
+                 Salve em  imagens/site/promo-1.jpg  (400 × 220 px). Troque o href para a categoria/produto da promoção. -->
+            <a class="promo-card" href="/frontend/produtos/produtos.html">
+                <div class="slot-imagem slot-promo" data-img="promo-1.jpg" data-nome="Promoção especial 1" data-tam="400 × 220 px"></div>
+            </a>
+            <!-- ===== TROQUE A IMAGEM: promoção especial 2 =====
+                 Salve em  imagens/site/promo-2.jpg  (400 × 220 px). Troque o href para a categoria/produto da promoção. -->
+            <a class="promo-card" href="/frontend/produtos/produtos.html">
+                <div class="slot-imagem slot-promo" data-img="promo-2.jpg" data-nome="Promoção especial 2" data-tam="400 × 220 px"></div>
+            </a>
+            <!-- ===== TROQUE A IMAGEM: promoção especial 3 =====
+                 Salve em  imagens/site/promo-3.jpg  (400 × 220 px). Troque o href para a categoria/produto da promoção. -->
+            <a class="promo-card" href="/frontend/produtos/produtos.html">
+                <div class="slot-imagem slot-promo" data-img="promo-3.jpg" data-nome="Promoção especial 3" data-tam="400 × 220 px"></div>
+            </a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="secao-titulo">Destaques da loja</h2>
+            <div class="destaques" id="destaques"><p class="vazio-lista">Carregando...</p></div>
+        </section>
+
+        <!-- ============ FAIXA DE PROMOÇÃO (largura total) ============ -->
+        <div class="faixa-link">
+        <!-- ===== TROQUE A IMAGEM: faixa larga de promoção =====
+             Salve o arquivo em  imagens/site/faixa-promo.jpg  (1200 × 140 px). Não precisa mexer neste HTML. -->
+        <div class="slot-imagem slot-faixa" data-img="faixa-promo.jpg" data-nome="Faixa de promoção" data-tam="1200 × 140 px"></div>
+        </div>
+
+        <!-- ============ MASCOTE ============
+             Coloque o seu mascote em  imagens/site/mascote.png  (PNG com fundo transparente, 500 × 625 px).
+             O texto do balão de fala você edita aqui mesmo. -->
+        <section class="mascote-faixa">
+            <div class="slot-imagem slot-mascote" data-img="mascote.png" data-nome="Mascote do Gearhub" data-tam="500 × 625 px (PNG transparente)"></div>
+            <div class="mascote-balao">
+                <h2>Precisa de ajuda para montar o seu setup?</h2>
+                <p>Escolha uma categoria, compare os periféricos e aproveite as promoções especiais da loja.</p>
+                <button type="button" class="botao" onclick="location.href='/frontend/produtos/produtos.html'">Ver todos os produtos</button>
+            </div>
+        </section>
+
+        <aside class="resumo">
+            <h2>Por que comprar no Gearhub?</h2>
+            <div class="beneficios">
+                <div><strong>Periféricos selecionados</strong>Teclados, mouses, headsets, monitores e muito mais.</div>
+                <div><strong>Pagamento facilitado</strong>PIX, cartão de crédito, débito ou boleto.</div>
+                <div><strong>Devolução por item</strong>Devolva só o item com problema ou o pedido inteiro.</div>
+            </div>
+        </aside>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <footer class="rodape">
+        <div class="wrap rodape-topo">
+            <div class="rodape-marca">
+                <span class="logo"><span class="logo-texto">Gear<span>hub</span></span></span>
+                <p>Loja de Periféricos</p>
+            </div>
+            <div class="rodape-links">
+                <a href="/frontend/inicio/inicio.html">Início</a>
+                <a href="/frontend/produtos/produtos.html">Produtos</a>
+                <a href="/frontend/meus_pedidos/meus_pedidos.html">Meus pedidos</a>
+                <a href="/frontend/carrinho/carrinho.html">Carrinho</a>
+            </div>
+        </div>
+        <div class="rodape-base">
+            <p>&copy; 2026 Gearhub - Loja de Periféricos</p>
+            <p>Lucas Rafael (Bigas) - Turma M32 - 2026</p>
+        </div>
+    </footer>
+
+    <script src="/frontend/js/comum.js"></script>
+    <script src="./inicio.js"></script>
+</body>
+
+</html>

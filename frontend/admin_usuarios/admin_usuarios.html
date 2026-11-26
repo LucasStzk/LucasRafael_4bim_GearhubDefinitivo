@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Gearhub</title>
+    <!-- Fontes do Google Fonts: Sora (títulos) e Inter (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/estilo.css">
+</head>
+
+<body>
+    <header class="topo">
+        <div class="wrap topo-linha">
+            <a class="logo" href="/frontend/admin/admin.html" aria-label="Gearhub - página inicial">
+                <!-- ============ LOGO ============
+                     Para usar uma imagem no lugar do texto, salve-a em  imagens/site/logo.png  (altura sugerida: 84 px, fundo transparente).
+                     Sem o arquivo, aparece o texto "Gearhub". -->
+                <img class="logo-img" src="/imagens/site/logo.png" alt="Gearhub" style="display:none"
+                     onload="this.style.display='inline'; this.nextElementSibling.style.display='none'" onerror="this.remove()">
+                <span class="logo-texto">Gear<span>hub</span></span> <small class="topo-titulo">| Administração</small>
+            </a>
+            <div class="topo-direita">
+                <span id="areaUsuario"></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-admin" aria-label="Menu principal">
+        <a href="/frontend/admin/admin.html">📊 Painel</a>
+        <a href="/frontend/periferico/periferico.html">🖱️ Periféricos</a>
+        <a href="/frontend/categoria/categoria.html">🗂️ Categorias</a>
+        <a href="/frontend/fabricante/fabricante.html">🏭 Fabricantes</a>
+        <a href="/frontend/especificacao/especificacao.html">📋 Especificações</a>
+        <a href="/frontend/admin_pedidos/admin_pedidos.html">🧾 Pedidos</a>
+        <a href="/frontend/admin_devolucoes/admin_devolucoes.html">↩️ Devoluções</a>
+        <a href="/frontend/admin_usuarios/admin_usuarios.html" class="ativo">👥 Usuários</a>
+        <a href="/frontend/inicio/inicio.html">🏬 Ver loja</a>
+    </nav>
+
+    <main class="container-master">
+        <section class="lista-registros">
+            <h3>Usuários do sistema</h3>
+            <div id="msg" class="msg"></div>
+            <div id="listaUsuarios">Carregando...</div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="wrap rodape-topo">
+            <div class="rodape-marca">
+                <span class="logo"><span class="logo-texto">Gear<span>hub</span></span></span>
+                <p>Loja de Periféricos</p>
+            </div>
+            <div class="rodape-links">
+                <a href="/frontend/inicio/inicio.html">Início</a>
+                <a href="/frontend/produtos/produtos.html">Produtos</a>
+                <a href="/frontend/meus_pedidos/meus_pedidos.html">Meus pedidos</a>
+                <a href="/frontend/carrinho/carrinho.html">Carrinho</a>
+            </div>
+        </div>
+        <div class="rodape-base">
+            <p>&copy; 2026 Gearhub - Loja de Periféricos</p>
+            <p>Lucas Rafael (Bigas) - Turma M32 - 2026</p>
+        </div>
+    </footer>
+
+    <script src="/frontend/js/comum.js"></script>
+    <script src="./admin_usuarios.js"></script>
+</body>
+
+</html>

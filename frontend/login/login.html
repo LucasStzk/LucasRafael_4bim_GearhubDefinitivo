@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Gearhub</title>
+    <!-- Fontes do Google Fonts: Sora (títulos) e Inter (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/estilo.css">
+</head>
+
+<body>
+    <div class="barra-topo">
+        <div class="wrap">
+            <span>Pague com <strong>PIX</strong> usando QR Code</span>
+            <span>Devolva <strong>só o item</strong> que precisar</span>
+        </div>
+    </div>
+
+    <header class="topo">
+        <div class="wrap topo-linha">
+            <a class="logo" href="/frontend/inicio/inicio.html" aria-label="Gearhub - página inicial">
+                <!-- ============ LOGO ============
+                     Para usar uma imagem no lugar do texto, salve-a em  imagens/site/logo.png  (altura sugerida: 84 px, fundo transparente).
+                     Sem o arquivo, aparece o texto "Gearhub". -->
+                <img class="logo-img" src="/imagens/site/logo.png" alt="Gearhub" style="display:none"
+                     onload="this.style.display='inline'; this.nextElementSibling.style.display='none'" onerror="this.remove()">
+                <span class="logo-texto">Gear<span>hub</span></span>
+            </a>
+            <form class="busca-topo" role="search" onsubmit="buscarTopo(event)">
+                <input type="search" id="campoBuscaTopo" placeholder="Busque por teclado, mouse, headset..." aria-label="Buscar produtos">
+                <button type="submit" aria-label="Buscar">🔍</button>
+            </form>
+            <div class="topo-direita">
+                <span id="areaUsuario"><a href="/frontend/login/login.html">Entre</a> ou <a href="/frontend/cadastro/cadastro.html">cadastre-se</a></span>
+                <a class="carrinho-link" href="/frontend/carrinho/carrinho.html" title="Carrinho">🛒<span id="qtdCarrinho" class="badge-carrinho">0</span></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="menu-principal" aria-label="Menu principal">
+        <a href="/frontend/inicio/inicio.html">🏠 Início</a>
+        <a href="/frontend/produtos/produtos.html">🛍️ Produtos</a>
+        <a href="/frontend/meus_pedidos/meus_pedidos.html">📦 Meus pedidos</a>
+        <a href="/frontend/carrinho/carrinho.html">🛒 Carrinho</a>
+    </nav>
+    <nav class="departamentos" id="departamentos" aria-label="Departamentos"></nav>
+
+    <main class="container-master">
+        <div class="pagina-form">
+            <section class="cartao-form">
+                <h2>Entre na sua conta</h2>
+                <form onsubmit="entrar(event)">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="********" required>
+                    <p class="rodape-form" style="text-align:right; margin-top:0.6rem"><a href="/frontend/esqueci_senha/esqueci_senha.html">Esqueci minha senha</a></p>
+
+                    <button type="submit" class="botao botao-largo">Entrar</button>
+                </form>
+                <div class="divisor-ou"><span>ou</span></div>
+                <!-- Botão oficial do Google (aparece quando GOOGLE_CLIENT_ID está no .env) -->
+                <div id="botaoGoogle" class="botao-google-area"></div>
+                <div id="msg" class="msg"></div>
+                <p class="rodape-form">Ainda não tem conta? <a href="/frontend/cadastro/cadastro.html">Cadastre-se</a></p>
+            </section>
+
+            <aside class="lateral-mascote">
+                <!-- ===== MASCOTE (login, cadastro e recuperação de senha): imagens/site/mascote-login.png (400 × 500 px, PNG transparente) ===== -->
+                <div class="slot-imagem slot-mascote" data-img="mascote-login.png" data-nome="Mascote - telas de login" data-tam="400 × 500 px (PNG transparente)"></div>
+                <div class="dica-teste">
+                    <h3>Contas para teste</h3>
+                    <p><strong>Funcionário (administrador)</strong><br><code>admin@gearhub.com</code> / <code>admin123</code></p>
+                    <p><strong>Cliente e funcionário</strong><br><code>bruno@gearhub.com</code> / <code>cliente123</code></p>
+                    <p><strong>Cliente</strong><br><code>ana@gearhub.com</code> / <code>cliente123</code></p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Aparece só para quem é cliente E funcionário -->
+    <div class="modal-fundo" id="modalEscolha" style="display:none">
+        <div class="modal-caixa" role="dialog" aria-modal="true" aria-labelledby="tituloEscolha">
+            <h2 id="tituloEscolha">Como você quer entrar?</h2>
+            <p>Sua conta é de cliente e também de funcionário. Escolha a visão que deseja abrir agora.</p>
+            <div class="acoes-linha">
+                <button type="button" class="botao" onclick="escolherVisao('cliente')">🛍️ Entrar como cliente</button>
+                <button type="button" class="botao botao-neutro" onclick="escolherVisao('admin')">🧾 Entrar como funcionário</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <footer class="rodape">
+        <div class="wrap rodape-topo">
+            <div class="rodape-marca">
+                <span class="logo"><span class="logo-texto">Gear<span>hub</span></span></span>
+                <p>Loja de Periféricos</p>
+            </div>
+            <div class="rodape-links">
+                <a href="/frontend/inicio/inicio.html">Início</a>
+                <a href="/frontend/produtos/produtos.html">Produtos</a>
+                <a href="/frontend/meus_pedidos/meus_pedidos.html">Meus pedidos</a>
+                <a href="/frontend/carrinho/carrinho.html">Carrinho</a>
+            </div>
+        </div>
+        <div class="rodape-base">
+            <p>&copy; 2026 Gearhub - Loja de Periféricos</p>
+            <p>Lucas Rafael (Bigas) - Turma M32 - 2026</p>
+        </div>
+    </footer>
+
+    <script src="/frontend/js/comum.js"></script>
+    <script src="./login.js"></script>
+</body>
+
+</html>
